@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kbs-credit-card/static/css/main.9d8a46ff.css",
+    "main.js": "/kbs-credit-card/static/js/main.cd51a710.js",
+    "index.html": "/kbs-credit-card/index.html",
+    "main.9d8a46ff.css.map": "/kbs-credit-card/static/css/main.9d8a46ff.css.map",
+    "main.cd51a710.js.map": "/kbs-credit-card/static/js/main.cd51a710.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d8a46ff.css",
+    "static/js/main.cd51a710.js"
+  ]
+}
