@@ -16,7 +16,68 @@
     }
   </script>
 </head>
-<body class="bg-[#0a0a0f] text-gray-100">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- script must run before React mounts to avoid flicker -->
+  <script>
+    // initialize CSS variables according to stored theme or system preference
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        // default to dark when no stored preference
+        theme = 'dark';
+      }
+      var light = {
+        '--color-primary': '#ffffff',
+        '--color-surface': '#f8fafc',
+        '--color-accent': '#6366f1',
+        '--color-text': '#0f172a',
+        '--color-subtext': '#6b7280',
+        '--color-border': '#e6edf3',
+        '--color-card': '#ffffff',
+        '--color-card-text': '#0f172a',
+        '--color-btn': '#f3f4f6',
+        '--color-btn-text': '#0f172a'
+      };
+      var dark = {
+        '--color-primary': '#0a0a0f',
+        '--color-surface': '#0f1724',
+        '--color-accent': '#6366f1',
+        '--color-text': '#eef2ff',
+        '--color-subtext': '#9ca3af',
+        '--color-border': '#111827',
+        '--color-card': '#12121a',
+        '--color-card-text': '#eef2ff',
+        '--color-btn': '#111827',
+        '--color-btn-text': '#eef2ff'
+      };
+      var vars = theme === 'dark' ? dark : light;
+      Object.keys(vars).forEach(function(k){ document.documentElement.style.setProperty(k, vars[k]); });
+      // expose current theme for scripts
+      window.__theme = theme;
+    })();
+  </script>
+  <script>
+    // Tailwind: expose color tokens (no dark mode class usage)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'var(--color-primary)',
+            surface: 'var(--color-surface)',
+            accent: 'var(--color-accent)',
+            text: 'var(--color-text)',
+            subtext: 'var(--color-subtext)',
+            border: 'var(--color-border)',
+            card: 'var(--color-card)',
+            cardText: 'var(--color-card-text)',
+            btn: 'var(--color-btn)',
+            btnText: 'var(--color-btn-text)'
+          }
+        }
+      }
+    };
+  </script>
   <div id="root"></div>
 </body>
 </html>
+<!-- file ends above -->
